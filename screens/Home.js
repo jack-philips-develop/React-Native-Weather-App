@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     currentWeatherWidgetsContainer: {
-        marginTop: 50
+        marginTop: 35
     }
 });
 

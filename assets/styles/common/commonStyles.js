@@ -1,5 +1,5 @@
 export const smText = {
-    fontSize: 17
+    fontSize: 16
 };
 
 export const mdText = {

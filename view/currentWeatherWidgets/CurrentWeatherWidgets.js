@@ -1,5 +1,8 @@
 import { Image, StyleSheet, Text, View } from "react-native";
+
 import { fwBold, fwSemiBold, lgText, mdText, smText, whiteText } from '../../assets/styles/common/commonStyles';
+import LabelWidget from "../../components/labelWidget/LabelWidget";
+import WidgetBar from "../widgetBar/WidgetBar";
 
 const cloudyRainyWidget = require('../../assets/images/weatherWidgets/cloudyRainyWidget.png');
 const sunnyCloudyRainyWidget = require('../../assets/images/weatherWidgets/sunnyCloudyRainyWidget.png');
@@ -10,13 +13,20 @@ const CurrentWeatherWidgets = () => {
     return (
         <View style={styles.root}>
             <Text style={styles.currentCityLabel}>Malayer, Iran</Text>
+
             <Image source={cloudyRainyWidget}
                 style={styles.weatherWidget} />
+
             <View style={styles.currentWeatherDegree}>
                 <Text style={styles.currentWeatherDegreeNumber}>29°</Text>
                 <Text style={styles.currentWeatherDegreeUnit}>C</Text>
             </View>
+
             <Text style={styles.currentWeatherDescription}>Expect high rain today.</Text>
+
+            <View style={styles.WidgetBarContainer}>
+                <WidgetBar />
+            </View>
         </View >
     )
 };
@@ -24,7 +34,7 @@ const CurrentWeatherWidgets = () => {
 const styles = StyleSheet.create({
     root: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     currentCityLabel: {
         ...smText,
@@ -55,7 +65,13 @@ const styles = StyleSheet.create({
     currentWeatherDescription: {
         ...smText,
         ...whiteText,
+        marginTop: 10,
         textAlign: 'center'
+    },
+    WidgetBarContainer: {
+        marginTop: 30,
+        width: '100%',
+        flex: 1
     }
 });
 
