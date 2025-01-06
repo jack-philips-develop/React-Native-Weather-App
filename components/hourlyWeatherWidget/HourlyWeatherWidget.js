@@ -1,17 +1,18 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { fwBold, fwSemiBold, semiMdText, smText, whiteText } from "../../assets/styles/common/commonStyles";
+import { getWidgetImage } from '../../utility/commonHelper/CommonHelper';
 
 const sunnyWidget = require('../../assets/images/weatherWidgets/sunnyWidget.png');
 const sunnyCloudyWidget = require('../../assets/images/weatherWidgets/sunnyCloudyWidget.png');
 const sunnyCloudyRainyWidget = require('../../assets/images/weatherWidgets/sunnyCloudyRainyWidget.png');
 const cloudyRainyWidget = require('../../assets/images/weatherWidgets/cloudyRainyWidget.png');
 
-const HourlyWeatherWidget = () => {
+const HourlyWeatherWidget = ({ widgetImageCode, time, degree }) => {
     return (
         <View style={styles.container}>
-            <Image source={sunnyCloudyRainyWidget} style={styles.widgetImage} />
-            <Text style={styles.widgetTimeLabel} >Now</Text>
-            <Text style={styles.widgetTemperatureLabel}>29°</Text>
+            <Image source={getWidgetImage(widgetImageCode)} style={styles.widgetImage} />
+            <Text style={styles.widgetTimeLabel} >{time}</Text>
+            <Text style={styles.widgetTemperatureLabel}>{degree}°</Text>
         </View>
     )
 };
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     },
     widgetTimeLabel: {
         ...whiteText,
-        ...smText,
+        fontSize: 15
     },
     widgetTemperatureLabel: {
         ...whiteText,

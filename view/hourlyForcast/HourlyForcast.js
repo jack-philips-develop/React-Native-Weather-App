@@ -5,7 +5,7 @@ import HourlyForecastWidgetRow from "./HourlyForecastWidgetRow";
 
 const clockIcon = require('../../assets/icons/clock.svg');
 
-const HourlyForcast = () => {
+const HourlyForcast = ({threeHourWeatherData}) => {
     return (
         <View>
             <View style={styles.titleContainer}>
@@ -13,7 +13,7 @@ const HourlyForcast = () => {
                 <Text style={styles.titleContainerText} >Hourly Forcast</Text>
             </View>
 
-            <HourlyForecastWidgetRow />
+            <HourlyForecastWidgetRow threeHourWeatherData={threeHourWeatherData} />
         </View>
     )
 };

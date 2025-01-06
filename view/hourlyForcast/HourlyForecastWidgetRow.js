@@ -1,17 +1,17 @@
 import { StyleSheet, View, ScrollView } from "react-native";
 import HourlyWeatherWidget from "../../components/hourlyWeatherWidget/HourlyWeatherWidget";
 
-const HourlyForecastWidgetRow = () => {
+const HourlyForecastWidgetRow = ({ threeHourWeatherData }) => {
   return (
     <ScrollView horizontal={true} style={styles.container}>
-      <HourlyWeatherWidget />
-      <HourlyWeatherWidget />
-      <HourlyWeatherWidget />
-      <HourlyWeatherWidget />
-      <HourlyWeatherWidget />
-      <HourlyWeatherWidget />
-      <HourlyWeatherWidget />
-      <HourlyWeatherWidget />
+      {threeHourWeatherData?.length > 0
+        ? threeHourWeatherData?.map(item =>
+          <HourlyWeatherWidget
+            widgetImageCode={item?.condition?.code}
+            time={item?.time.split(" ")[1]}
+            degree={item?.temp_c} />)
+        : <View></View>
+      }
     </ScrollView>
   );
 };

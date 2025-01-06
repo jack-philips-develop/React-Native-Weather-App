@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 
 import { fwBold, fwSemiBold, lgText, mdText, smText, whiteText } from '../../assets/styles/common/commonStyles';
+import { getWidgetImage } from "../../utility/commonHelper/CommonHelper";
 import LabelWidget from "../../components/labelWidget/LabelWidget";
 import WidgetBar from "../widgetBar/WidgetBar";
 
@@ -9,23 +10,23 @@ const sunnyCloudyRainyWidget = require('../../assets/images/weatherWidgets/sunny
 const sunnyCloudyWidget = require('../../assets/images/weatherWidgets/sunnyCloudyWidget.png');
 const sunnyWidget = require('../../assets/images/weatherWidgets/sunnyWidget.png');
 
-const CurrentWeatherWidgets = () => {
+const CurrentWeatherWidgets = ({ locationData, currentWeatherData }) => {
     return (
         <View style={styles.root}>
-            <Text style={styles.currentCityLabel}>Malayer, Iran</Text>
+            <Text style={styles.currentCityLabel}>{locationData?.region}</Text>
 
-            <Image source={cloudyRainyWidget}
+            <Image source={getWidgetImage(currentWeatherData?.condition?.code)}
                 style={styles.weatherWidget} />
 
             <View style={styles.currentWeatherDegree}>
-                <Text style={styles.currentWeatherDegreeNumber}>29°</Text>
+                <Text style={styles.currentWeatherDegreeNumber}>{currentWeatherData?.temp_c}°</Text>
                 <Text style={styles.currentWeatherDegreeUnit}>C</Text>
             </View>
 
-            <Text style={styles.currentWeatherDescription}>Expect high rain today.</Text>
+            <Text style={styles.currentWeatherDescription}>{currentWeatherData?.condition?.text}</Text>
 
             <View style={styles.WidgetBarContainer}>
-                <WidgetBar />
+                <WidgetBar currentWeatherData={currentWeatherData} />
             </View>
         </View >
     )

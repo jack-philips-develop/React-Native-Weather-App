@@ -5,12 +5,12 @@ const windIcon = require('../../assets/icons/wind.svg');
 const dropIcon = require('../../assets/icons/drop.svg');
 const sunIcon = require('../../assets/icons/sun.svg');
 
-const WidgetBar = () => {
+const WidgetBar = ({ currentWeatherData }) => {
     return (
         <View style={styles.widgetBarContainer}>
-            <LabelWidget source={windIcon} label='11km/hr' />
-            <LabelWidget source={dropIcon} label='02%' />
-            <LabelWidget source={sunIcon} label='8 hr' />
+            <LabelWidget source={windIcon} label={`${currentWeatherData?.wind_mph} mph`} />
+            <LabelWidget source={dropIcon} label={currentWeatherData?.humidity} />
+            <LabelWidget source={sunIcon} label={currentWeatherData?.uv} />
         </View>
     )
 
