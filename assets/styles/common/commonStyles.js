@@ -2,6 +2,10 @@ export const smText = {
     fontSize: 16
 };
 
+export const semiMdText = {
+    fontSize: 20
+}
+
 export const mdText = {
     fontSize: 25
 };

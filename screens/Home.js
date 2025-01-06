@@ -3,6 +3,7 @@ import { BlurView } from "expo-blur";
 import React from "react";
 
 import CurrentWeatherWidgets from "../view/currentWeatherWidgets/CurrentWeatherWidgets";
+import HourlyForcast from "../view/hourlyForcast/HourlyForcast";
 import Header from "../view/header/Header";
 
 const mainBackground = require('../assets/images/main-background.jpg');
@@ -13,8 +14,13 @@ const Home = ({ navigation }) => {
             <BlurView intensity={50} style={styles.blurContainer}>
                 <View style={styles.root}>
                     <Header />
+
                     <View style={styles.currentWeatherWidgetsContainer}>
                         <CurrentWeatherWidgets />
+                    </View>
+
+                    <View style={styles.dailyForcastContainer}>
+                        <HourlyForcast />
                     </View>
                 </View>
             </BlurView>
@@ -45,7 +51,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     currentWeatherWidgetsContainer: {
-        marginTop: 35
+        marginTop: 15
+    },
+    dailyForcastContainer: {
+        marginTop: 25,
+        marginStart: 10,
+        marginEnd: 10,
     }
 });
 
