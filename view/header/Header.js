@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     image2: {
-        width: 25,
-        height: 25,
+        width: 30,
+        height: 30,
         marginHorizontal: 5,
         color: 'white'
     },
