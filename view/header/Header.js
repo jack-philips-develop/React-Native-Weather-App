@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View } from "react-native";
 
-const listIcon = require('../../assets/icons/list.svg');
-const calendarIcon = require('../../assets/icons/calendar.svg');
+const listIcon = require('../../assets/icons/list.png');
+const calendarIcon = require('../../assets/icons/calendar.png');
 
 const Header = () => {
     return (

@@ -1,9 +1,9 @@
 import { StyleSheet, View } from "react-native";
 import LabelWidget from "../../components/labelWidget/LabelWidget";
 
-const windIcon = require('../../assets/icons/wind.svg');
-const dropIcon = require('../../assets/icons/drop.svg');
-const sunIcon = require('../../assets/icons/sun.svg');
+const windIcon = require('../../assets/icons/wind.png');
+const dropIcon = require('../../assets/icons/drop.png');
+const sunIcon = require('../../assets/icons/sun.png');
 
 const WidgetBar = ({ currentWeatherData }) => {
     return (

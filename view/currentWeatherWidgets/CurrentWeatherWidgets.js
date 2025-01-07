@@ -13,8 +13,8 @@ const sunnyWidget = require('../../assets/images/weatherWidgets/sunnyWidget.png'
 const CurrentWeatherWidgets = ({ locationData, currentWeatherData }) => {
     return (
         <View style={styles.root}>
-            <Text style={styles.currentCityLabel}>{locationData?.region}</Text>
-
+            {/* <Text style={styles.currentCityLabel}>{locationData?.region}</Text> */}
+            <Text style={{backgroundColor: 'white'}}>this is text</Text>
             <Image source={getWidgetImage(currentWeatherData?.condition?.code)}
                 style={styles.weatherWidget} />
 

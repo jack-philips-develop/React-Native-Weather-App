@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { fwBold, semiMdText, whiteText } from "../../assets/styles/common/commonStyles";
 import HourlyForecastWidgetRow from "./HourlyForecastWidgetRow";
 
-const clockIcon = require('../../assets/icons/clock.svg');
+const clockIcon = require('../../assets/icons/clock.png');
 
 const HourlyForcast = ({threeHourWeatherData}) => {
     return (
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         ...semiMdText,
         ...fwBold,
         marginStart: 7,
-        letterSpacing: 1
+        letterSpacing: 1,
     }
 })
 
