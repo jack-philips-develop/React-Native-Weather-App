@@ -19,7 +19,7 @@ const Home = ({ navigation }) => {
 
     const apiKey = "9ce42b44eadda2fb316ea6a09c77a5c8";
     const city = "Tehran";
-    const url = `http://api.weatherstack.com/forecast?access_key=${apiKey}&query=${city}`;
+    const url = `https://api.weatherstack.com/forecast?access_key=${apiKey}&query=${city}`;
 
     useEffect(() => {
         const fetchWeatherData = async () => {
