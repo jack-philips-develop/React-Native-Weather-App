@@ -5,7 +5,7 @@ const LabelWidget = ({ source, label }) => {
     return (
         <View style={styles.container}>
             <Image style={styles.icon} source={source} />
-            <Text style={styles.text}>{label}</Text>
+            <Text style={styles.text}>{label}</Text>        
         </View>
     )
 };

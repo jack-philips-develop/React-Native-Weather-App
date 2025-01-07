@@ -5,8 +5,9 @@ const HourlyForecastWidgetRow = ({ threeHourWeatherData }) => {
   return (
     <ScrollView horizontal={true} style={styles.container}>
       {threeHourWeatherData?.length > 0
-        ? threeHourWeatherData?.map(item =>
+        ? threeHourWeatherData?.map((item, index) =>
           <HourlyWeatherWidget
+            key={index}
             widgetImageCode={item?.condition?.code}
             time={item?.time.split(" ")[1]}
             degree={item?.temp_c} />)
@@ -18,7 +19,7 @@ const HourlyForecastWidgetRow = ({ threeHourWeatherData }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 17,
+    marginTop: 10,
   },
 });
 

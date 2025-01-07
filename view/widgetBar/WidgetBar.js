@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import LabelWidget from "../../components/labelWidget/LabelWidget";
 
 const windIcon = require('../../assets/icons/wind.png');
@@ -8,9 +8,9 @@ const sunIcon = require('../../assets/icons/sun.png');
 const WidgetBar = ({ currentWeatherData }) => {
     return (
         <View style={styles.widgetBarContainer}>
-            <LabelWidget source={windIcon} label={`${currentWeatherData?.wind_mph} mph`} />
+            <LabelWidget source={windIcon} label={`${currentWeatherData?.wind_speed} mph`} />
             <LabelWidget source={dropIcon} label={currentWeatherData?.humidity} />
-            <LabelWidget source={sunIcon} label={currentWeatherData?.uv} />
+            <LabelWidget source={sunIcon} label={currentWeatherData?.uv_index} />
         </View>
     )
 
@@ -18,7 +18,6 @@ const WidgetBar = ({ currentWeatherData }) => {
 
 const styles = StyleSheet.create({
     widgetBarContainer: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },

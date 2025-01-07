@@ -20,9 +20,9 @@ const HourlyForcast = ({threeHourWeatherData}) => {
 
 const styles = StyleSheet.create({
     titleContainer: {
-        flex: 1,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 15
     },
     titleContainerIcon: {
         ...fwBold,

@@ -5,8 +5,8 @@ import axios from "axios";
 
 import CurrentWeatherWidgets from "../view/currentWeatherWidgets/CurrentWeatherWidgets";
 import HourlyForcast from "../view/hourlyForcast/HourlyForcast";
-// import axiosInstance from "../services/base/AxiosInstance";
 import Header from "../view/header/Header";
+import { hours } from "../resource/testForeCast";
 
 const mainBackground = require('../assets/images/main-background.jpg');
 
@@ -17,16 +17,16 @@ const Home = ({ navigation }) => {
     const [locationData, setLocationData] = useState(null);
     const [currentWeatherData, setCurrentWeatherData] = useState(null);
 
-    const apiKey = "fca778bda40b426f979145731250601";
-    const city = "London";
-    const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&aqi=no`;
+    const apiKey = "9ce42b44eadda2fb316ea6a09c77a5c8";
+    const city = "Tehran";
+    const url = `http://api.weatherstack.com/forecast?access_key=${apiKey}&query=${city}`;
 
     useEffect(() => {
         const fetchWeatherData = async () => {
+            setIsLoading(true)
             try {
                 const response = await axios.get(url);
                 fetchWeatherDataCallback(response.data);
-                setIsLoading(false);
             } catch (err) {
                 setError(err.message);
                 setIsLoading(false);
@@ -37,17 +37,19 @@ const Home = ({ navigation }) => {
     }, []);
 
     const fetchWeatherDataCallback = (weatherData) => {
-        const targetTimes = ["00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00"];
-        const threeHourWeatherData = weatherData.forecast.forecastday[0].hour.filter(item => targetTimes.includes(item.time.split(" ")[1]));
-
-        setThreeHourWeatherData(threeHourWeatherData);
         setLocationData(weatherData.location);
         setCurrentWeatherData(weatherData.current);
+
+        const targetTimes = ["00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00"];
+        const threeHourWeatherData = hours.filter(item => targetTimes.includes(item.time.split(" ")[1]));
+        setThreeHourWeatherData(threeHourWeatherData);
+        setIsLoading(false)
     }
 
     return (
-        <ImageBackground source={mainBackground} style={styles.background}>
-            <BlurView intensity={50} style={styles.blurContainer}>
+        isloading
+            ? <Text>loaing</Text>
+            : <ImageBackground source={mainBackground} style={styles.background}>
                 <View style={styles.root}>
                     <Header />
 
@@ -60,8 +62,7 @@ const Home = ({ navigation }) => {
                         <HourlyForcast threeHourWeatherData={threeHourWeatherData} />
                     </View>
                 </View>
-            </BlurView>
-        </ImageBackground>
+            </ImageBackground>
     );
 };
 
@@ -72,9 +73,7 @@ const styles = StyleSheet.create({
         height: 'auto',
         resizeMode: "cover",
     },
-    blurContainer: {
-        flex: 1,
-    },
+
     root: {
         flex: 1,
         padding: 10,
@@ -88,10 +87,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     currentWeatherWidgetsContainer: {
-        marginTop: 15
     },
     dailyForcastContainer: {
-        marginTop: 25,
+        marginTop: 15,
         marginStart: 10,
         marginEnd: 10,
     }

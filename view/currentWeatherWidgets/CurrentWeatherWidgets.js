@@ -13,17 +13,17 @@ const sunnyWidget = require('../../assets/images/weatherWidgets/sunnyWidget.png'
 const CurrentWeatherWidgets = ({ locationData, currentWeatherData }) => {
     return (
         <View style={styles.root}>
-            {/* <Text style={styles.currentCityLabel}>{locationData?.region}</Text> */}
-            <Text style={{backgroundColor: 'white'}}>this is text</Text>
+            <Text style={styles.currentCityLabel}>{locationData?.region}</Text>
+
             <Image source={getWidgetImage(currentWeatherData?.condition?.code)}
                 style={styles.weatherWidget} />
 
             <View style={styles.currentWeatherDegree}>
-                <Text style={styles.currentWeatherDegreeNumber}>{currentWeatherData?.temp_c}°</Text>
+                <Text style={styles.currentWeatherDegreeNumber}>{currentWeatherData?.feelslike}°</Text>
                 <Text style={styles.currentWeatherDegreeUnit}>C</Text>
             </View>
 
-            <Text style={styles.currentWeatherDescription}>{currentWeatherData?.condition?.text}</Text>
+            <Text style={styles.currentWeatherDescription}>{currentWeatherData?.weather_descriptions[0]}</Text>
 
             <View style={styles.WidgetBarContainer}>
                 <WidgetBar currentWeatherData={currentWeatherData} />
@@ -34,7 +34,6 @@ const CurrentWeatherWidgets = ({ locationData, currentWeatherData }) => {
 
 const styles = StyleSheet.create({
     root: {
-        flex: 1,
         alignItems: 'center',
     },
     currentCityLabel: {
@@ -43,11 +42,10 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     weatherWidget: {
-        width: 350,
-        height: 350,
+        width: 300,
+        height: 300,
     },
     currentWeatherDegree: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -66,13 +64,11 @@ const styles = StyleSheet.create({
     currentWeatherDescription: {
         ...smText,
         ...whiteText,
-        marginTop: 10,
         textAlign: 'center'
     },
     WidgetBarContainer: {
-        marginTop: 30,
+        marginTop: 10,
         width: '100%',
-        flex: 1
     }
 });
 
